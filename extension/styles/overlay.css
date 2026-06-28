@@ -1,0 +1,193 @@
+#ai-chat-logbook-overlay,
+#ai-chat-logbook-preview {
+  all: initial;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f4f7fb;
+  direction: ltr;
+  box-sizing: border-box;
+  z-index: 2147483647;
+}
+
+#ai-chat-logbook-overlay *,
+#ai-chat-logbook-preview * {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+#ai-chat-logbook-overlay {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 320px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 14px;
+  background: rgba(17, 24, 39, 0.96);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(8px);
+  line-height: 1.35;
+}
+
+#ai-chat-logbook-overlay .ailb-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+#ai-chat-logbook-overlay .ailb-title {
+  font-weight: 750;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+
+#ai-chat-logbook-overlay .ailb-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+#ai-chat-logbook-overlay .ailb-pill.is-recording {
+  background: #053d24;
+  color: #d1fae5;
+}
+
+#ai-chat-logbook-overlay .ailb-pill.is-paused {
+  background: #4a3212;
+  color: #fff7ed;
+}
+
+#ai-chat-logbook-overlay .ailb-meta {
+  min-height: 20px;
+  color: #dbeafe;
+  font-size: 12px;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+#ai-chat-logbook-overlay .ailb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#ai-chat-logbook-overlay button,
+#ai-chat-logbook-preview button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  user-select: none;
+}
+
+#ai-chat-logbook-overlay button:hover,
+#ai-chat-logbook-preview button:hover {
+  filter: brightness(1.13);
+}
+
+#ai-chat-logbook-overlay button:focus-visible,
+#ai-chat-logbook-preview button:focus-visible {
+  outline: 3px solid #fef08a;
+  outline-offset: 2px;
+}
+
+#ai-chat-logbook-overlay .ailb-primary,
+#ai-chat-logbook-preview [data-role='export'] {
+  background: #1d4ed8;
+}
+
+#ai-chat-logbook-overlay .ailb-secondary,
+#ai-chat-logbook-preview [data-role='copy'],
+#ai-chat-logbook-preview [data-role='close'] {
+  background: #334155;
+}
+
+#ai-chat-logbook-overlay .ailb-icon {
+  min-width: 32px;
+  padding: 0;
+  background: #111827;
+}
+
+#ai-chat-logbook-overlay .ailb-toast {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #fef3c7;
+  font-size: 12px;
+  word-break: break-word;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#ai-chat-logbook-preview {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.72);
+}
+
+#ai-chat-logbook-preview[hidden] {
+  display: none !important;
+}
+
+#ai-chat-logbook-preview .ailb-preview-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: min(920px, calc(100vw - 32px));
+  height: min(720px, calc(100vh - 32px));
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 14px;
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.55);
+}
+
+#ai-chat-logbook-preview .ailb-preview-head,
+#ai-chat-logbook-preview .ailb-preview-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #f4f7fb;
+}
+
+#ai-chat-logbook-preview textarea {
+  flex: 1 1 auto;
+  width: 100%;
+  resize: none;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #030712;
+  color: #e5e7eb;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  #ai-chat-logbook-overlay {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+}

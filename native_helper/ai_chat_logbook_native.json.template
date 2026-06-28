@@ -1,0 +1,9 @@
+{
+  "name": "ai_chat_logbook_native",
+  "description": "AI Chat Logbook native Markdown writer",
+  "path": "C:\\CHANGE_ME\\run_native_host.cmd",
+  "type": "stdio",
+  "allowed_extensions": [
+    "ai-chat-logbook@zeittresor.local"
+  ]
+}

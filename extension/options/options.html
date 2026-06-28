@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Chat Logbook Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>AI Chat Logbook</h1>
+        <p>Capture enabled AI chat pages as Markdown files for context handoff.</p>
+      </div>
+      <button id="saveTop" type="button">Save</button>
+    </header>
+
+    <section class="card">
+      <h2>General</h2>
+      <label class="check"><input id="enabled" type="checkbox"> Extension enabled</label>
+      <label class="check"><input id="recordingByDefault" type="checkbox"> Start recording automatically on enabled chat pages</label>
+      <label class="check"><input id="showOverlay" type="checkbox"> Show recording overlay</label>
+      <label class="check"><input id="autoCapture" type="checkbox"> Auto-capture DOM changes</label>
+      <label class="check"><input id="autoExportOnAssistantTurn" type="checkbox"> Experimental: auto-export after an assistant turn</label>
+      <div class="grid2">
+        <label>Language
+          <select id="language">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+        <label>Theme
+          <select id="theme">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Saving</h2>
+      <div class="grid2">
+        <label>Save mode
+          <select id="saveMode">
+            <option value="downloads">Firefox downloads API</option>
+            <option value="native">Native helper, fallback to downloads</option>
+          </select>
+        </label>
+        <label>Download folder prefix
+          <input id="downloadRoot" type="text" placeholder="AI_Chat_Logs">
+        </label>
+      </div>
+      <label>Native helper root path, optional
+        <input id="nativeRootPath" type="text" placeholder="D:\\AI_Chat_Logs">
+      </label>
+      <p class="hint">Without the native helper, Firefox saves relative to your default Downloads folder.</p>
+    </section>
+
+    <section class="card">
+      <h2>Redaction</h2>
+      <label class="check"><input id="redactEnabled" type="checkbox"> Redact sensitive patterns before export</label>
+      <label class="check"><input id="redactEmails" type="checkbox"> E-mail addresses</label>
+      <label class="check"><input id="redactPhones" type="checkbox"> Phone-like numbers</label>
+      <label class="check"><input id="redactApiKeys" type="checkbox"> Common API-key patterns</label>
+    </section>
+
+    <section class="card">
+      <div class="row-between">
+        <h2>Enabled chat profiles</h2>
+        <button id="addProfile" type="button">Add profile</button>
+      </div>
+      <p class="hint">A content script is injected broadly, but it exits immediately unless the current host matches one of these enabled profiles.</p>
+      <div id="profiles" class="profiles"></div>
+    </section>
+
+    <footer>
+      <button id="saveBottom" type="button">Save settings</button>
+      <button id="restoreDefaults" type="button">Restore defaults</button>
+      <span id="status" aria-live="polite"></span>
+    </footer>
+  </main>
+
+  <template id="profileTemplate">
+    <article class="profile">
+      <div class="profile-head">
+        <label class="check"><input data-field="enabled" type="checkbox"> Enabled</label>
+        <button data-action="remove" type="button">Remove</button>
+      </div>
+      <div class="grid2">
+        <label>ID
+          <input data-field="id" type="text" placeholder="grok">
+        </label>
+        <label>Display name
+          <input data-field="displayName" type="text" placeholder="Grok">
+        </label>
+        <label>Adapter
+          <select data-field="adapter">
+            <option value="generic">Generic</option>
+            <option value="chatgpt">ChatGPT</option>
+          </select>
+        </label>
+        <label>Assistant label
+          <input data-field="assistantLabel" type="text" placeholder="Grok">
+        </label>
+      </div>
+      <label>Host contains, comma separated
+        <input data-field="hostContains" type="text" placeholder="grok.com, x.ai">
+      </label>
+    </article>
+  </template>
+
+  <script src="../shared/defaults.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
